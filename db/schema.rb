@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829182324) do
+ActiveRecord::Schema.define(version: 20141004220620) do
 
   create_table "api_keys", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20140829182324) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "replies", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.string   "guess"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "replies", ["post_id"], name: "index_replies_on_post_id"
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

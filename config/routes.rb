@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get :mine
     end
+    resources :replies, only: crud + [:index]
   end
 
   root to: "posts#index"
