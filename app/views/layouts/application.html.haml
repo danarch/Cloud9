@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Cloud9
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .flash
+        - flash.each do |name, msg|
+          %div{ :class => "alert alert-#{flash_class name}" }
+            %a.close{ "data-dismiss" => "alert" } &times;
+            %div{ :id => "flash_#{flash_class name}" }
+              = msg
+      = yield
