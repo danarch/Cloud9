@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # Send back an empty response - no content, just not an error
     head :ok
   end
-  
+
   def unfriend
     current_user.unfriend!(User.find params[:id])
     head :ok
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
   def friends
     @users = current_user.friends
     render :index
+  end
+
+  def replies
+    @replies = current_user.replies
   end
 
   def show

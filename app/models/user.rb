@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :api_keys
+  has_many :friends
   has_many :posts
+  has_many :replies
 
   has_many :replies
 
