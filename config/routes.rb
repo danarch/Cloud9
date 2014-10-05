@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   get '/friends'         => 'users#friends'
 
-  root to: "posts#index"
+  root to: "static_pages#home"
 end
