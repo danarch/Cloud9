@@ -1,23 +1,24 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all.includes(:user)
-    render :index
+    # render :index
   end
 
   def mine
     @posts = current_user.posts.all.includes(:user)
-    render :index
+    # render :index
   end
 
   def show
     @post = Post.find params[:id]
-    render :show
+    # render :show
   end
 
   def create
     @post = current_user.posts.new post_params
     if @post.save
-      render :show
+      redirect_to @post
+      # render :show
     else
       render_invalid @post
     end
@@ -26,7 +27,8 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find params[:id]
     if @post.update post_params
-      render :show
+      redirect_to @post
+      # render :show
     else
       render_invalid @post
     end
@@ -35,7 +37,7 @@ class PostsController < ApplicationController
   def delete
     @post = current_user.posts.find params[:id]
     @post.delete
-    render :show
+    # render :show
   end
 
 private
