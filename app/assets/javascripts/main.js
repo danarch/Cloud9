@@ -2,14 +2,14 @@ $('.toggle').click(function(){
   $(this).toggleClass('hidden');
 });
 
-// $('.guess').click(function(){
-//   $(this).css('display', 'none');
-//   $('h2').css('display', 'block');
-//   $('.toggle').toggleClass('hidden');
+// $('.right').click(function(){
+//   $(this).toggleClass('selected');
 // });
 //
-// $('h2').click(function(){
-//   $(this).css('display', 'none');
-//   $('.guess').css('display', 'block');
-//   $('.toggle').toggleClass('hidden');
+// $('.wrong').click(function(){
+//   $(this).toggleClass('selected-wrong');
+// });
+//
+// $('.right').click(function(){
+//   $(this).toggleClass('selected-right');
 // });
