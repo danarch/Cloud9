@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004231343) do
+ActiveRecord::Schema.define(version: 20141005090458) do
 
   create_table "api_keys", force: true do |t|
     t.integer  "user_id"
@@ -23,17 +23,23 @@ ActiveRecord::Schema.define(version: 20141004231343) do
   create_table "friends", force: true do |t|
     t.integer  "source_id"
     t.integer  "target_id"
-    t.boolean  "confirmed",   default: true
+    t.boolean  "confirmed",  default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cloudpic_file_name"
+    t.string   "cloudpic_content_type"
+    t.integer  "cloudpic_file_size"
+    t.datetime "cloudpic_updated_at"
+    t.string   "answer"
+    t.string   "choice1"
+    t.string   "choice2"
+    t.string   "choice3"
   end
 
   create_table "replies", force: true do |t|
@@ -42,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141004231343) do
     t.string   "guess"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "correct",    default: false
   end
 
   add_index "replies", ["post_id"], name: "index_replies_on_post_id"
@@ -60,6 +67,11 @@ ActiveRecord::Schema.define(version: 20141004231343) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
