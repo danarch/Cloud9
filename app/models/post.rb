@@ -18,4 +18,8 @@ class Post < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :cloudpic, :content_type => /\Aimage\/.*\Z/
   validates :answer, :choice1, :choice2, :choice3, presence: true
+
+  def choices
+    choices = [Post.answer, Post.choice1, Post.choice2, Post.choice3].shuffle!
+  end
 end

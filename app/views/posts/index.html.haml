@@ -8,6 +8,9 @@
       .toggle
         .guess What do you see?
         %h2.answer post.answer
+        %ul.guess-options
+          - post.choices.each do |choice|
+            %li.right choice
         .comments
           .correct-head Correct
           .incorrect-head Incorrect

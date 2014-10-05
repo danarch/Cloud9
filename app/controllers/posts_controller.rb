@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_user.friends.posts.all.includes(:user)
+    friends_ids = current_user.friends.map(&:id)
+    @posts = Post.where(user_id: friends_ids).includes(:user)
     # render :index
   end
 
