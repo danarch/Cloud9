@@ -1,0 +1,232 @@
+ // Bourbon & Neat
+@import '../../bower_components/bourbon/dist/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+
+// Partials
+@import 'color';
+@import 'fonts';
+
+// Custom Styles
+* {
+  font-family: $helvetica;
+  color: $grey;
+  text-decoration: none;
+}
+
+body {
+  background: $lightblue;
+  font-family: $helvetica;
+  color: $lightgrey;
+
+}
+
+nav {
+  background-color: $white;
+  width: 100%;
+  height: 80px;
+  border-bottom: 4px solid $lightblue;
+  position: fixed;
+  z-index: 99;
+
+  .container {
+    @include outer-container;
+    text-align: center;
+  }
+
+  .logo {
+    width: 50px;
+    margin: 20px 0;
+    vertical-align: middle;
+  }
+
+  .account {
+    width: 20px;
+    margin-left: 40px;
+    vertical-align: middle;
+  }
+
+  .signout {
+    margin-left: 40px;
+  }
+}
+
+.feed {
+  @include outer-container;
+  background-color: $lightgrey;
+  padding-top: 80px;
+}
+
+.post {
+  @include span-columns(8);
+  @include shift(2);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid $lightgrey;
+  /* border-radius: 6px; */
+  overflow: visible;
+  background-color: $white;
+  position: relative;
+
+  .avatar {
+    position: absolute;
+    top: 12px;
+    right: -24px;
+    z-index: 5;
+
+    img {
+      border-radius: 50%;
+      border: 2px solid $lightgrey;
+      width: 80px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: -20px;
+    }
+
+    h3 {
+      font-size: 1em;
+      font-family: $nixie;
+      text-align: center;
+      color: $blue;
+      border-radius: 2px;
+      background-color: $white;
+      padding: 10px 24px 10px 16px;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+
+  .cloud {
+    @include span-columns(8 of 8);
+    @include omega();
+    border-bottom: 4px solid $lightgrey;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .guess {
+    @include span-columns(8 of 8);
+    /* @include omega(); */
+    font-family: $nixie;
+    color: $darkblue;
+    text-align: center;
+    border-bottom: 4px solid $lightgrey;
+    padding: 16px 0 20px 0;
+    margin-bottom: 0;
+    display: block;
+    font-size: 1.5em;
+
+    &::after {
+      content:"";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 8px 0 8px;
+      border-color: $blue transparent transparent transparent;
+      display: block;
+      margin: 10px auto 0 auto;
+    }
+  }
+
+  h2 {
+    @include span-columns(8 of 8);
+    /* @include omega(); */
+    font-family: $nixie;
+    color: $darkblue;
+    text-align: center;
+    border-bottom: 4px solid $lightgrey;
+    padding-bottom: 24px;
+    margin-bottom: 0;
+    display: none;
+  }
+
+  .comments {
+    display: none;
+  }
+
+  .correct-head {
+    @include span-columns(3 of 8);
+    @include omega();
+    padding: 30px 0 8px 36px;
+    color: $blue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .incorrect-head {
+    @include span-columns(5 of 8);
+    @include omega();
+    padding: 30px 0 8px 36px;
+    color: $red;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .correct {
+    @include span-columns(3 of 8);
+    @include omega();
+    border-right: 2px solid $lightgrey;
+    padding-left: 36px;
+    margin-bottom: 30px;
+  }
+
+  .incorrect {
+    @include span-columns(5 of 8);
+    margin-bottom: 30px;
+  }
+
+  ul {
+
+    li {
+      width: 100%;
+      list-style: none;
+      border-bottom: 2px solid $lightgrey;
+      padding: 14px 0;
+      font-size: .9em;
+    }
+
+    img {
+      width: 24px;
+      border-radius: 50%;
+      background-color: $darkblue;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    span {
+      vertical-align: middle;
+    }
+
+    .name {
+      vertical-align: middle;
+    }
+
+    .incorrect-guess {
+      margin-left: 12px;
+      float: right;
+      color: $red;
+      vertical-align: middle;
+
+      &::before {
+        content:"Guess: ";
+        color: $grey;
+        font-size: .9em;
+      }
+
+    }
+  }
+}
+
+.hidden {
+
+  .guess {
+    display: none;
+  }
+
+  .answer {
+    display: block;
+  }
+
+  .comments {
+    display: block;
+  }
+}
