@@ -10,5 +10,14 @@ Rails.application.routes.draw do
     resources :replies, only: crud + [:index]
   end
 
+  resources :users, only: [:index] do
+    member do
+      post :friend
+      post :unfriend
+    end
+  end
+
+  get '/friends'         => 'users#friends'
+
   root to: "posts#index"
 end
