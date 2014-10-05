@@ -21,9 +21,20 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :api_keys
-  has_many :friends, as: :user
   has_many :posts
   has_many :replies
 
+  def friends
+    target_ids = Friend.where(source_id: id).pluck :target_id
+    User.find target_ids
+  end
+
+  def friend! other
+    Friend.where(source_id: id, target_id: other.id).first_or_create!
+  end
+
+  def unfriend! other
+    Friend.where(source_id: id, target_id: other.id).delete_all
+  end
 
 end
