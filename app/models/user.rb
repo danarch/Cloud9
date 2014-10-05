@@ -21,8 +21,9 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :api_keys
-  has_many :friends
+  has_many :friends, as: :user
   has_many :posts
   has_many :replies
+
 
 end

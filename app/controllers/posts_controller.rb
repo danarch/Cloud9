@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.includes(:user)
+    @posts = current_user.friends.posts.all.includes(:user)
     # render :index
   end
 

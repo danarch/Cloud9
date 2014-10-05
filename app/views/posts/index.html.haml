@@ -1,0 +1,26 @@
+.feed
+  = @posts.each do |post|
+    .post
+      .avatar
+        %h3 post.user.name
+        %img{:alt => "", :src => post.user.avatar.url}/
+      %img.cloud{:alt => "", :src => post.cloudpic.url}/
+      .toggle
+        .guess What do you see?
+        %h2.answer post.answer
+        .comments
+          .correct-head Correct
+          .incorrect-head Incorrect
+          = post.replies.each do |reply|
+            - unless reply.guess.nil?
+              %ul.correct
+                - if reply.correct?
+                  %li
+                    %img{:alt => "", :src => reply.user.avatar.url}/
+                    %span.name reply.user.name
+              %ul.incorrect
+                - if !reply.correct?
+                  %li
+                    %img{:alt => "", :src => reply.user.avatar.url}/
+                    %span.name reply.user.name
+                    %span.incorrect-guess reply.guess

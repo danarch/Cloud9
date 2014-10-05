@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Devise controllers need functionality provided by this module in production mode
   include ActionController::MimeResponds
   protect_from_forgery with: :exception, unless: :api_request?
+
+  def self.return_json *args
+    before_filter :set_json_format, *args
+  end
 
   def api_request?
     request.headers["HTTP_AUTH_TOKEN"] != nil
@@ -36,6 +41,10 @@ private
   def render_invalid obj
     # Helper to send back an invalid object message with the right status code
     render json: { errors: obj.errors.full_messages }, status: 422
+  end
+
+  def set_json_format
+    request.format = :json
   end
 
 protected
