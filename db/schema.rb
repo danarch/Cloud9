@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005054532) do
+ActiveRecord::Schema.define(version: 20141005073007) do
 
   create_table "api_keys", force: true do |t|
     t.integer  "user_id"
@@ -29,11 +29,17 @@ ActiveRecord::Schema.define(version: 20141005054532) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cloudpic_file_name"
+    t.string   "cloudpic_content_type"
+    t.integer  "cloudpic_file_size"
+    t.datetime "cloudpic_updated_at"
+    t.string   "answer"
+    t.string   "choice1"
+    t.string   "choice2"
+    t.string   "choice3"
   end
 
   create_table "replies", force: true do |t|

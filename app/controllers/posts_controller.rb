@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:cloudpic, :answer, :choice1, :choice2, :choice3)
   end
 
 end
