@@ -20,6 +20,7 @@ gem 'figaro'
 
 gem 'bourbon'
 gem 'neat'
+gem 'bitters'
 
 group :development do
   gem 'pry-rails'
