@@ -18,6 +18,9 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'figaro'
 
+gem 'bourbon'
+gem 'neat'
+
 group :development do
   gem 'pry-rails'
   gem 'spring'
